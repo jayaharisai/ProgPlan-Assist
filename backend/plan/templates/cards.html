@@ -1,0 +1,21 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+
+<div class="cards_container">
+    <div class="container">
+        <ul>
+            {% for task in tasks %}
+            <li class="card">
+                
+                    <p class="discription">{{ task.task }}</p>
+                <form action="{% url 'delete_task' task.id %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="secondery_btn">Done</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
